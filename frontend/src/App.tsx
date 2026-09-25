@@ -66,10 +66,15 @@ function App() {
     e.preventDefault();
     setIsSubmitting(true);
     try {
+      const payload = {
+        ...formData,
+        scheduledAt: new Date(formData.scheduledAt).toISOString()
+      };
+
       const res = await fetch(`${API_URL}/emails`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData)
+        body: JSON.stringify(payload)
       });
       if (res.ok) {
         setFormData({ to: '', subject: '', body: '', scheduledAt: '' });

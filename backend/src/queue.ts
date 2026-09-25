@@ -10,6 +10,9 @@ export const redisOptions = {
   port: Number(process.env.REDIS_PORT) || 6379,
   password: process.env.REDIS_PASSWORD || undefined,
   maxRetriesPerRequest: null,
+  enableReadyCheck: false,
+  enableOfflineQueue: false,
+  connectTimeout: 10000,
   family: 0,
   tls: process.env.REDIS_HOST?.includes('upstash.io') ? { rejectUnauthorized: false } : undefined
 };
